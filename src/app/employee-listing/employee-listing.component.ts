@@ -20,7 +20,8 @@ export class EmployeeListingComponent implements OnInit {
       cellClass: 'cell-wrap-text',
       autoHeight: true,
       sortable: true,
-      resizable: true
+      resizable: true,
+      filter: true
     };
 
     constructor(private employeeService: EmployeeService) {}
