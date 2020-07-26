@@ -10,18 +10,17 @@ export class EmployeeListingComponent implements OnInit {
     title = 'EmployeeListing';
     readonly columnDefs = [
         { headerName: 'ID', field: 'id', maxWidth: 100 },
-        { headerName: 'First Name', field: 'first_name' },
-        { headerName: 'Last Name', field: 'last_name'},
-        { headerName: 'Address', field: 'address', cellStyle: { 'word-wrap': 'normal' }},
-        { headerName: 'Department', field: 'department', cellStyle: { 'word-wrap': 'normal' }},
+        { headerName: 'First Name', field: 'first_name', editable: true },
+        { headerName: 'Last Name', field: 'last_name', editable: true },
+        { headerName: 'Address', field: 'address', editable: true },
+        { headerName: 'Department', field: 'department', editable: true },
     ];
     readonly defaultColDef = {
       flex: 1,
       cellClass: 'cell-wrap-text',
       autoHeight: true,
       sortable: true,
-      resizable: true,
-      editable: true
+      resizable: true
     };
 
     constructor(private employeeService: EmployeeService) {}
