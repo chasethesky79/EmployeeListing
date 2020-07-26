@@ -21,7 +21,10 @@ export class EmployeeListingComponent implements OnInit {
       autoHeight: true,
       sortable: true,
       resizable: true,
-      filter: true
+      filter: true,
+      filterParams: {
+        buttons: ['reset']
+      },
     };
 
     constructor(private employeeService: EmployeeService) {}
