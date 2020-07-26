@@ -2,6 +2,8 @@
     class="ag-theme-alpine employee-listing"
     domLayout="autoHeight"
     [columnDefs]="columnDefs"
+    [pagination]="true"
+    [paginationPageSize]="20"
     (gridReady)="onGridReady($event)"
 >
 </ag-grid-angular>
