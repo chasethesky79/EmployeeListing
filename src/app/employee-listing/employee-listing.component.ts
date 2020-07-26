@@ -15,6 +15,13 @@ export class EmployeeListingComponent implements OnInit {
         { headerName: 'Address', field: 'address', cellStyle: { 'word-wrap': 'normal' }},
         { headerName: 'Department', field: 'department', cellStyle: { 'word-wrap': 'normal' }},
     ];
+    readonly defaultColDef = {
+      flex: 1,
+      cellClass: 'cell-wrap-text',
+      autoHeight: true,
+      sortable: true,
+      resizable: true
+    };
 
     constructor(private employeeService: EmployeeService) {}
 
