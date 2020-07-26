@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {EmployeeService} from "../service/employee.service";
+import { EmployeeService } from '../service/employee.service';
 
 @Component({
     selector: 'app-employee-listing',
@@ -8,26 +8,26 @@ import {EmployeeService} from "../service/employee.service";
 })
 export class EmployeeListingComponent implements OnInit {
     title = 'EmployeeListing';
-    columnDefs = [
-        { headerName: 'ID', field: 'id' },
+    readonly columnDefs = [
+        { headerName: 'ID', field: 'id', maxWidth: 100 },
         { headerName: 'First Name', field: 'first_name' },
-        { headerName: 'Last Name', field: 'last_name' },
-        { headerName: 'Address', field: 'address' },
-        { headerName: 'Department', field: 'department' },
+        { headerName: 'Last Name', field: 'last_name'},
+        { headerName: 'Address', field: 'address', cellStyle: { 'word-wrap': 'normal' }},
+        { headerName: 'Department', field: 'department', cellStyle: { 'word-wrap': 'normal' }},
     ];
 
     constructor(private employeeService: EmployeeService) {}
 
     onGridReady = (params) => {
         params.api.sizeColumnsToFit();
-        params.api.resetRowHeights();
         params.api.setRowData(this.employeeService.loadEmployees());
         window.addEventListener('resize', () => {
             setTimeout(() => {
                 params.api.sizeColumnsToFit();
+                params.api.resetRowHeights();
             });
         });
-    };
+    }
 
     ngOnInit(): void {}
 }
