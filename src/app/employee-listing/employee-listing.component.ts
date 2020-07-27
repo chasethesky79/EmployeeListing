@@ -50,7 +50,7 @@ export class EmployeeListingComponent implements OnInit {
     constructor(private employeeService: EmployeeService) {}
 
     onBtApply = () => {
-      this.columnDefs = [this.colDefID];
+      this.columnDefs = [];
       if (this.getBooleanValue('#first_name')) {
         this.columnDefs.push(this.colDefFName);
       }
@@ -63,6 +63,7 @@ export class EmployeeListingComponent implements OnInit {
       if (this.getBooleanValue('#department')) {
         this.columnDefs.push(this.colDefDepartment);
       }
+      this.columnDefs.push(this.colDefID);
     }
 
     onGridReady = async (params: any) => {
