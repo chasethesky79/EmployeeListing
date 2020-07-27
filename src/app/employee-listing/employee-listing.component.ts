@@ -29,16 +29,20 @@ export class EmployeeListingComponent implements OnInit {
 
     constructor(private employeeService: EmployeeService) {}
 
-    onGridReady = (params) => {
-        params.api.sizeColumnsToFit();
-        params.api.setRowData(this.employeeService.loadEmployees());
-        window.addEventListener('resize', () => {
-            setTimeout(() => {
-                params.api.sizeColumnsToFit();
-                params.api.resetRowHeights();
-            });
+    onGridReady = async (params) => {
+      params.api.sizeColumnsToFit();
+      params.api.setRowData(await this.employeeService.loadEmployees());
+      window.addEventListener('resize', () => {
+        setTimeout(() => {
+          params.api.sizeColumnsToFit();
+          params.api.resetRowHeights();
         });
+      });
     }
 
     ngOnInit(): void {}
+
+    onCellValueChanged(params: any) {
+      console.log(`CELL VALUE ${JSON.stringify(params.data)}`);
+    }
 }

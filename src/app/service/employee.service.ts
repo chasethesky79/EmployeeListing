@@ -8,7 +8,16 @@ import { Employee } from '../models/employee';
 export class EmployeeService {
     constructor() {}
 
-    loadEmployees(): Employee[] {
-        return (data as any).default;
+    async loadEmployees() {
+       return await this.saveEmployees((data as any).default);
+    }
+
+    async saveEmployees(employees: Employee[]): Promise<Employee[]> {
+      return new Promise( (resolve, reject) => {
+        setTimeout( () => {
+          localStorage.people = JSON.stringify(employees);
+          resolve(employees);
+        }, 1000);
+      });
     }
 }
