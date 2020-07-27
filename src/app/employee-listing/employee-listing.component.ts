@@ -81,7 +81,7 @@ export class EmployeeListingComponent implements OnInit {
 
     setPaginationOption = (event) => {
       const { target : { value }} = event;
-      this.gridApi.paginationSetPageSize(value);
+      this.gridApi.paginationSetPageSize(Number(value));
     }
 
     ngOnInit(): void {}
