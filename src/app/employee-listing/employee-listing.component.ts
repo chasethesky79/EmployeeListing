@@ -50,7 +50,7 @@ export class EmployeeListingComponent implements OnInit {
     constructor(private employeeService: EmployeeService) {}
 
     onBtApply = () => {
-      this.columnDefs = [];
+      this.columnDefs = [this.colDefID];
       if (this.getBooleanValue('#first_name')) {
         this.columnDefs.push(this.colDefFName);
       }
