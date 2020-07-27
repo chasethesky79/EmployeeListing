@@ -16,33 +16,33 @@ export class EmployeeListingComponent implements OnInit {
         { headerName: 'Department', field: 'department', editable: true },
     ];
     readonly defaultColDef = {
-      flex: 1,
-      cellClass: 'cell-wrap-text',
-      autoHeight: true,
-      sortable: true,
-      resizable: true,
-      filter: true,
-      filterParams: {
-        buttons: ['reset']
-      },
+        flex: 1,
+        cellClass: 'cell-wrap-text',
+        autoHeight: true,
+        sortable: true,
+        resizable: true,
+        filter: true,
+        filterParams: {
+            buttons: ['reset'],
+        },
     };
 
     constructor(private employeeService: EmployeeService) {}
 
     onGridReady = async (params: any) => {
-      params.api.sizeColumnsToFit();
-      params.api.setRowData(await this.employeeService.loadEmployees());
-      window.addEventListener('resize', () => {
-        setTimeout(() => {
-          params.api.sizeColumnsToFit();
-          params.api.resetRowHeights();
+        params.api.sizeColumnsToFit();
+        params.api.setRowData(await this.employeeService.loadEmployees());
+        window.addEventListener('resize', () => {
+            setTimeout(() => {
+                params.api.sizeColumnsToFit();
+                params.api.resetRowHeights();
+            });
         });
-      });
-    }
+    };
 
     ngOnInit(): void {}
 
     onCellValueChanged = async (params: any) => {
-      params.api.setRowData(await this.employeeService.saveEmployee(params.data));
-    }
+        params.api.setRowData(await this.employeeService.saveEmployee(params.data));
+    };
 }
