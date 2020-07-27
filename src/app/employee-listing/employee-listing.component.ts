@@ -10,8 +10,7 @@ import {ColumnDefinition} from '../models/column-definition';
 export class EmployeeListingComponent implements OnInit {
     readonly colDefID = {
       headerName: 'ID',
-      field: 'id',
-      maxWidth: 100
+      field: 'id'
     };
     readonly colDefFName = {
       headerName: 'First Name',
@@ -44,7 +43,7 @@ export class EmployeeListingComponent implements OnInit {
         filter: true,
         filterParams: {
             buttons: ['reset'],
-        },
+        }
     };
     private gridApi;
 
@@ -64,7 +63,6 @@ export class EmployeeListingComponent implements OnInit {
       if (this.getBooleanValue('#department')) {
         this.columnDefs.push(this.colDefDepartment);
       }
-      this.gridApi.sizeColumnsToFit();
     }
 
     onGridReady = async (params: any) => {
