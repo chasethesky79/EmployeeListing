@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { EmployeeService } from '../service/employee.service';
-import {ColumnDefinition} from '../models/column-definition';
+import { ColumnDefinition } from '../models/column-definition';
 
 @Component({
     selector: 'app-employee-listing',
@@ -9,28 +9,28 @@ import {ColumnDefinition} from '../models/column-definition';
 })
 export class EmployeeListingComponent implements OnInit {
     readonly colDefID = {
-      headerName: 'ID',
-      field: 'id'
+        headerName: 'ID',
+        field: 'id',
     };
     readonly colDefFName = {
-      headerName: 'First Name',
-      field: 'first_name',
-      editable: true
+        headerName: 'First Name',
+        field: 'first_name',
+        editable: true,
     };
     readonly colDefLName = {
-      headerName: 'Last Name',
-      field: 'last_name',
-      editable: true
+        headerName: 'Last Name',
+        field: 'last_name',
+        editable: true,
     };
     readonly colDefAddress = {
-      headerName: 'Address',
-      field: 'address',
-      editable: true
+        headerName: 'Address',
+        field: 'address',
+        editable: true,
     };
     readonly colDefDepartment = {
-      headerName: 'Department',
-      field: 'department',
-      editable: true
+        headerName: 'Department',
+        field: 'department',
+        editable: true,
     };
     columnDefs: ColumnDefinition[] = [this.colDefID, this.colDefFName, this.colDefLName, this.colDefAddress, this.colDefDepartment];
 
@@ -43,27 +43,27 @@ export class EmployeeListingComponent implements OnInit {
         filter: true,
         filterParams: {
             buttons: ['reset'],
-        }
+        },
     };
     private gridApi;
 
     constructor(private employeeService: EmployeeService) {}
 
     onBtApply = () => {
-      this.columnDefs = [];
-      if (this.getBooleanValue('#first_name')) {
-        this.columnDefs.push(this.colDefFName);
-      }
-      if (this.getBooleanValue('#last_name')) {
-        this.columnDefs.push(this.colDefLName);
-      }
-      if (this.getBooleanValue('#address')) {
-        this.columnDefs.push(this.colDefAddress);
-      }
-      if (this.getBooleanValue('#department')) {
-        this.columnDefs.push(this.colDefDepartment);
-      }
-      this.columnDefs.push(this.colDefID);
+        this.columnDefs = [];
+        if (this.getBooleanValue('#first_name')) {
+            this.columnDefs.push(this.colDefFName);
+        }
+        if (this.getBooleanValue('#last_name')) {
+            this.columnDefs.push(this.colDefLName);
+        }
+        if (this.getBooleanValue('#address')) {
+            this.columnDefs.push(this.colDefAddress);
+        }
+        if (this.getBooleanValue('#department')) {
+            this.columnDefs.push(this.colDefDepartment);
+        }
+        this.columnDefs.push(this.colDefID);
     }
 
     onGridReady = async (params: any) => {
@@ -79,8 +79,10 @@ export class EmployeeListingComponent implements OnInit {
     }
 
     setPaginationOption = (event) => {
-      const { target : { value }} = event;
-      this.gridApi.paginationSetPageSize(Number(value));
+        const {
+            target: { value },
+        } = event;
+        this.gridApi.paginationSetPageSize(Number(value));
     }
 
     ngOnInit(): void {}
@@ -90,6 +92,6 @@ export class EmployeeListingComponent implements OnInit {
     }
 
     private getBooleanValue = (cssSelector) => {
-      return document.querySelector(cssSelector).checked === true;
+        return document.querySelector(cssSelector).checked === true;
     }
 }

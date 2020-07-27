@@ -1,17 +1,17 @@
 <div class="add-remove-columns">
-  Select columns to show then hit 'Apply'<br />
-  <label><input type="checkbox" id="first_name" checked/>First Name</label>
-  <label><input type="checkbox" id="last_name" checked/>Last Name</label>
-  <label><input type="checkbox" id="address" checked/>Address</label>
-  <label><input type="checkbox" id="department" checked/>Department</label>
-  <button (click)="onBtApply()">Apply</button>
-  <label>Pagination Options</label>
-  <select name="pagination" id="pagination" (change)="setPaginationOption($event)">
-    <option value="10">10</option>
-    <option value="15">15</option>
-    <option value="20">20</option>
-    <option value="30">30</option>
-  </select>
+    Select columns to show then hit 'Apply'<br />
+    <label><input type="checkbox" id="first_name" checked />First Name</label>
+    <label><input type="checkbox" id="last_name" checked />Last Name</label>
+    <label><input type="checkbox" id="address" checked />Address</label>
+    <label><input type="checkbox" id="department" checked />Department</label>
+    <button (click)="onBtApply()">Apply</button>
+    <label>Pagination Options</label>
+    <select name="pagination" id="pagination" (change)="setPaginationOption($event)">
+        <option value="10">10</option>
+        <option value="15">15</option>
+        <option value="20">20</option>
+        <option value="30">30</option>
+    </select>
 </div>
 <ag-grid-angular
     class="ag-theme-alpine employee-listing"
