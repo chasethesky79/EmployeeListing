@@ -8,12 +8,12 @@ import { Employee } from '../models/employee';
 export class EmployeeService {
     constructor() {}
 
-    async loadEmployees() {
+    async loadEmployees(): Promise<Employee[]> {
        const employees = await this.fetchFromLocalStorage();
        return employees.length === 0 ? await this.saveInLocalStorage((data as any).default) : employees;
     }
 
-    async saveEmployee(employee: Employee) {
+    async saveEmployee(employee: Employee): Promise<Employee[]> {
       return new Promise((resolve, reject) => {
         setTimeout(() => {
           const employeesToSave = JSON.parse(localStorage.employees).map((element: Employee) =>
